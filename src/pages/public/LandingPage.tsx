@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { motion, type Variants } from 'framer-motion';
 import { FaWhatsapp, FaInstagram, FaFacebookF } from 'react-icons/fa';
-import { LogIn, Menu, X, ShieldCheck, ChevronRight } from 'lucide-react';
+import { Menu, X, ShieldCheck, ChevronRight } from 'lucide-react';
 import GheeBottle from '../../assets/ghee-bottle.png';
 
 /* ================= ANIMATIONS ================= */
@@ -207,16 +206,6 @@ export default function LandingPage() {
             </button>
           </nav>
 
-          {/* Staff Login Action Button */}
-          <div className="hidden md:flex items-center gap-3">
-            <Link
-              to="/login"
-              className="inline-flex items-center gap-2 bg-slate-900 text-white px-5 py-2.5 rounded-full text-xs font-bold shadow-md hover:bg-green-700 hover:shadow-lg transition-all"
-            >
-              <LogIn className="w-3.5 h-3.5" />
-              <span>Staff Login</span>
-            </Link>
-          </div>
 
           {/* Mobile Menu Button */}
           <button
@@ -255,15 +244,6 @@ export default function LandingPage() {
             >
               Contact
             </button>
-            <div className="pt-2 border-t border-slate-100">
-              <Link
-                to="/login"
-                className="w-full flex items-center justify-center gap-2 bg-green-600 text-white px-5 py-3 rounded-xl text-sm font-bold shadow-md hover:bg-green-700 transition-colors"
-              >
-                <LogIn className="w-4 h-4" />
-                <span>Staff / ERP Login</span>
-              </Link>
-            </div>
           </div>
         )}
       </header>
@@ -332,14 +312,6 @@ export default function LandingPage() {
               <ChevronRight className="w-4 h-4" />
             </button>
 
-            <Link
-              to="/login"
-              className="w-full sm:w-auto bg-slate-900 text-white px-8 py-4 rounded-full font-bold shadow-lg
-                         hover:bg-slate-800 hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2"
-            >
-              <LogIn className="w-4 h-4" />
-              <span>Staff / ERP Login</span>
-            </Link>
 
             <button
               onClick={() => scrollToSection('contact')}
@@ -480,11 +452,6 @@ export default function LandingPage() {
                   Quality Process
                 </button>
               </li>
-              <li>
-                <Link to="/login" className="text-green-400 font-semibold hover:underline">
-                  Staff / ERP Portal
-                </Link>
-              </li>
             </ul>
           </div>
 
@@ -504,11 +471,6 @@ export default function LandingPage() {
 
         <div className="max-w-6xl mx-auto mt-16 pt-8 border-t border-slate-900 text-center text-xs text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p>© {new Date().getFullYear()} Akshara Foods Group. All rights reserved.</p>
-          <div className="flex items-center gap-4">
-            <Link to="/login" className="text-slate-400 hover:text-green-400 transition-colors">
-              DairyFlow ERP Login
-            </Link>
-          </div>
         </div>
       </footer>
 
