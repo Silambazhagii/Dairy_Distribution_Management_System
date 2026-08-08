@@ -1,4 +1,4 @@
-import React from 'react';
+
 import type { StatusValue } from '../../types';
 
 interface StatusBadgeVariant {

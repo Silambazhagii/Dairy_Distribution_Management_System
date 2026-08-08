@@ -1,5 +1,5 @@
 // Products Master Page
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Plus, Edit2, Power } from 'lucide-react';
 import DataTable from '../../components/ui/DataTable';
 import StatusBadge from '../../components/ui/StatusBadge';
@@ -68,7 +68,7 @@ export default function ProductsMasterPage() {
     toast(`Product ${row.status === STATUS.ACTIVE ? 'deactivated' : 'activated'}`, 'info');
   };
 
-  const openEdit = (row: ProductWithStatus) => { setEditItem(row); setForm({ category: row.category, name: row.name, packSize: row.packSize, unit: row.unit || 'pcs', price: row.price ? String(row.price) : '' }); setErrors({}); setModalOpen(true); };
+  const openEdit = (row: ProductWithStatus) => { setEditItem(row); setForm({ category: row.category, name: row.name, packSize: row.packSize, unit: row.unit || 'pcs', price: '' }); setErrors({}); setModalOpen(true); };
   const openAdd  = () => { setEditItem(null); setForm({ category: '', name: '', packSize: '', unit: 'pcs', price: '' }); setErrors({}); setModalOpen(true); };
 
   const columns: TableColumn<ProductWithStatus>[] = [

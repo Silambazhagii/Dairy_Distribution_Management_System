@@ -1,5 +1,5 @@
 // Sales Returns Page
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Plus } from 'lucide-react';
 import DataTable from '../../components/ui/DataTable';
 import StatusBadge from '../../components/ui/StatusBadge';

@@ -1,5 +1,5 @@
 // Cold Storage Stock Page
-import React from 'react';
+
 import { Thermometer, Package, AlertTriangle } from 'lucide-react';
 import DataTable from '../../components/ui/DataTable';
 import StatusBadge from '../../components/ui/StatusBadge';

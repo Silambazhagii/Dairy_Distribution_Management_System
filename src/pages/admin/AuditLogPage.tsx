@@ -1,10 +1,9 @@
 // Audit Log Page
-import React from 'react';
 import DataTable from '../../components/ui/DataTable';
 import PageHeader from '../../components/ui/PageHeader';
 import { mockAuditLog } from '../../mock';
 import { formatDateTime } from '../../utils';
-import type { AuditLog } from '../../types';
+import type { AuditEntry } from '../../types';
 import type { TableColumn } from '../../types';
 
 const ACTION_COLORS: Record<string, string> = {
@@ -16,7 +15,7 @@ const ACTION_COLORS: Record<string, string> = {
 };
 
 export default function AuditLogPage() {
-  const columns: TableColumn<AuditLog>[] = [
+  const columns: TableColumn<AuditEntry>[] = [
     { header: 'Timestamp',   key: 'ts',       render: (r) => <span className="tabular-nums text-xs">{formatDateTime(r.timestamp)}</span> },
     { header: 'User',        accessor: 'user', sortable: true, key: 'user' },
     { header: 'Action',      key: 'action',   render: (r) => <span className={`text-xs px-2 py-0.5 rounded font-semibold ${ACTION_COLORS[r.action] || 'bg-gray-100 text-gray-600'}`}>{r.action}</span> },
@@ -33,7 +32,7 @@ export default function AuditLogPage() {
         breadcrumbs={['Administration', 'Audit Log']}
         description="Complete record of all system actions"
       />
-      <DataTable<AuditLog>
+      <DataTable<AuditEntry>
         columns={columns}
         data={mockAuditLog}
         searchKeys={['user', 'action', 'module', 'reference', 'description']}

@@ -1,5 +1,5 @@
 // Reports Hub Page
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { TrendingUp, Package, Wallet, AlertTriangle } from 'lucide-react';
 import PageHeader from '../../components/ui/PageHeader';
 import { DateInput } from '../../components/ui/FormInputs';
@@ -83,7 +83,7 @@ export default function ReportsPage() {
                   <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
                   <XAxis dataKey="name" tick={{ fontSize: 11 }} />
                   <YAxis tick={{ fontSize: 11 }} tickFormatter={(v: number) => `₹${v / 1000}k`} />
-                  <Tooltip formatter={(v: ValueType) => formatCurrency(Number(v))} />
+                  <Tooltip formatter={(v: ValueType | undefined) => formatCurrency(Number(v ?? 0))} />
                   <Legend wrapperStyle={{ fontSize: 11 }} />
                   <Bar dataKey="cash"   name="Cash"   fill="#22c55e" radius={[3, 3, 0, 0]} />
                   <Bar dataKey="credit" name="Credit" fill="#3b82f6" radius={[3, 3, 0, 0]} />
@@ -108,7 +108,7 @@ export default function ReportsPage() {
                   <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
                   <XAxis dataKey="name" tick={{ fontSize: 11 }} />
                   <YAxis tick={{ fontSize: 11 }} tickFormatter={(v: number) => `₹${v / 1000}k`} />
-                  <Tooltip formatter={(v: ValueType) => formatCurrency(Number(v))} />
+                  <Tooltip formatter={(v: ValueType | undefined) => formatCurrency(Number(v ?? 0))} />
                   <Bar dataKey="amount" name="Amount" fill="#22c55e" radius={[3, 3, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
@@ -126,7 +126,7 @@ export default function ReportsPage() {
                 <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" horizontal={false} />
                 <XAxis type="number" tick={{ fontSize: 11 }} />
                 <YAxis dataKey="name" type="category" tick={{ fontSize: 11 }} width={90} />
-                <Tooltip formatter={(v: ValueType) => formatNumber(Number(v))} />
+                <Tooltip formatter={(v: ValueType | undefined) => formatNumber(Number(v ?? 0))} />
                 <Legend wrapperStyle={{ fontSize: 11 }} />
                 <Bar dataKey="received"  name="Received"  fill="#dbeafe" radius={[0, 3, 3, 0]} />
                 <Bar dataKey="available" name="Available" fill="#3b82f6" radius={[0, 3, 3, 0]} />
@@ -147,7 +147,7 @@ export default function ReportsPage() {
                   <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" />
                   <XAxis dataKey="name" tick={{ fontSize: 11 }} />
                   <YAxis tick={{ fontSize: 11 }} />
-                  <Tooltip formatter={(v: ValueType) => formatNumber(Number(v))} />
+                  <Tooltip formatter={(v: ValueType | undefined) => formatNumber(Number(v ?? 0))} />
                   <Bar dataKey="qty" name="Units Spoiled" fill="#ef4444" radius={[3, 3, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>

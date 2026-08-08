@@ -1,5 +1,5 @@
 // Users & Roles Admin Page
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Plus, Edit2, Power } from 'lucide-react';
 import DataTable from '../../components/ui/DataTable';
 import StatusBadge from '../../components/ui/StatusBadge';

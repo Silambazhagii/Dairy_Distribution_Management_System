@@ -1,5 +1,5 @@
 // Salesperson Ledger Page
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { SelectInput } from '../../components/ui/FormInputs';
 import PageHeader from '../../components/ui/PageHeader';
 import { mockSalespersons, mockSales, mockCollections } from '../../mock';

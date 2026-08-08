@@ -1,10 +1,9 @@
-import React from 'react';
 import {
   AreaChart, Area, BarChart, Bar, PieChart, Pie, Cell,
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend,
 } from 'recharts';
-import type { TooltipProps } from 'recharts';
-import type { ValueType, NameType } from 'recharts/types/component/DefaultTooltipContent';
+import type { TooltipContentProps } from 'recharts';
+import type { ValueType, NameType, Payload } from 'recharts/types/component/DefaultTooltipContent';
 import {
   Package, Truck, Wallet, AlertTriangle, TrendingUp, ShoppingCart,
   ArrowRight, Thermometer, Clock,
@@ -20,12 +19,12 @@ import { formatCurrency, formatNumber } from '../../utils';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 
-const ChartTooltip = ({ active, payload, label }: TooltipProps<ValueType, NameType>) => {
+const ChartTooltip = ({ active, payload, label }: TooltipContentProps<ValueType, NameType>) => {
   if (!active || !payload?.length) return null;
   return (
     <div className="bg-white border border-slate-200 rounded-lg shadow-lg px-3 py-2 text-xs ring-1 ring-slate-900/5">
       <p className="font-semibold text-slate-700 mb-1">{label}</p>
-      {payload.map((p) => (
+      {payload.map((p: Payload<ValueType, NameType>) => (
         <p key={String(p.name)} className="flex items-center gap-1.5 font-medium" style={{ color: p.color }}>
           <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: String(p.color) }} />
           {p.name}: {formatCurrency(Number(p.value))}
@@ -95,7 +94,7 @@ export default function DashboardPage() {
                   <CartesianGrid strokeDasharray="3 3" stroke="#f1f5f9" vertical={false} />
                   <XAxis dataKey="day"  tick={{ fontSize: 11, fill: '#94a3b8', fontWeight: 500 }} axisLine={false} tickLine={false} />
                   <YAxis tick={{ fontSize: 11, fill: '#94a3b8', fontWeight: 500 }} axisLine={false} tickLine={false} tickFormatter={(v: number) => `₹${v / 1000}k`} />
-                  <Tooltip content={<ChartTooltip />} />
+                  <Tooltip content={ChartTooltip} />
                   <Legend wrapperStyle={{ fontSize: 11, paddingTop: 12, fontWeight: 500 }} iconType="circle" iconSize={6} />
                   <Area type="monotone" dataKey="morning" name="Morning" stroke="#3b82f6" strokeWidth={2} fill="url(#morning)" dot={false} activeDot={{ r: 4 }} />
                   <Area type="monotone" dataKey="evening" name="Evening" stroke="#8b5cf6" strokeWidth={2} fill="url(#evening)" dot={false} activeDot={{ r: 4 }} />
@@ -119,7 +118,7 @@ export default function DashboardPage() {
                       <Cell key={i} fill={entry.color} stroke="#fff" strokeWidth={2} />
                     ))}
                   </Pie>
-                  <Tooltip formatter={(v: ValueType) => `${String(v)}%`} />
+                  <Tooltip formatter={(v: ValueType | undefined) => `${String(v ?? '')}%`} />
                 </PieChart>
               </ResponsiveContainer>
               <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">

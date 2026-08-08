@@ -1,5 +1,5 @@
 // Salesperson Settlement Page
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Check, AlertTriangle, TrendingUp, TrendingDown, Calculator } from 'lucide-react';
 import PageHeader from '../../components/ui/PageHeader';
 import StatusBadge from '../../components/ui/StatusBadge';

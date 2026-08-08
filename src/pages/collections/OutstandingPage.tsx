@@ -1,5 +1,5 @@
 // Outstanding Page
-import React from 'react';
+
 import DataTable from '../../components/ui/DataTable';
 import StatusBadge from '../../components/ui/StatusBadge';
 import PageHeader from '../../components/ui/PageHeader';

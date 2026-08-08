@@ -1,5 +1,5 @@
 // Batch / Inward Entry Page
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Plus, Eye, Edit2, Trash2 } from 'lucide-react';
 import DataTable from '../../components/ui/DataTable';
 import StatusBadge from '../../components/ui/StatusBadge';
@@ -40,7 +40,7 @@ export default function BatchEntryPage() {
   const [errors, setErrors]       = useState<FormErrors>({});
 
   const openAdd  = () => { setEditItem(null); setForm(EMPTY_FORM); setErrors({}); setModalOpen(true); };
-  const openEdit = (row: Batch) => { setEditItem(row); setForm({ ...row, productId: row.productId, quantityReceived: String(row.quantityReceived) }); setErrors({}); setModalOpen(true); };
+  const openEdit = (row: Batch) => { setEditItem(row); setForm({ batchNumber: row.id, productId: row.productId, session: row.session, productionDate: row.productionDate, expiryDate: row.expiryDate, quantityReceived: String(row.quantityReceived) }); setErrors({}); setModalOpen(true); };
 
   const validate = (): FormErrors => {
     const e: FormErrors = {};
@@ -58,9 +58,7 @@ export default function BatchEntryPage() {
     if (Object.keys(e).length) { setErrors(e); return; }
     const product = PRODUCTS.find((p) => p.id === form.productId);
     const row: Batch = {
-      ...editItem,
-      id:               editItem ? editItem.id : `B${Date.now()}`,
-      batchNumber:      form.batchNumber,
+      id:               editItem ? editItem.id : form.batchNumber || `B${Date.now()}`,
       product:          product?.name || form.productId,
       productId:        form.productId,
       session:          form.session as Batch['session'],

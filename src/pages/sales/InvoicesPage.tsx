@@ -1,5 +1,5 @@
 // Invoices Page
-import React from 'react';
+
 import { Download } from 'lucide-react';
 import DataTable from '../../components/ui/DataTable';
 import StatusBadge from '../../components/ui/StatusBadge';

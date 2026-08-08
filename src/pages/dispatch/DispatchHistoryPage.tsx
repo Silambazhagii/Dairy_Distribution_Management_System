@@ -1,5 +1,5 @@
 // Dispatch History Page
-import React from 'react';
+
 import { Eye, Truck } from 'lucide-react';
 import DataTable from '../../components/ui/DataTable';
 import StatusBadge from '../../components/ui/StatusBadge';
